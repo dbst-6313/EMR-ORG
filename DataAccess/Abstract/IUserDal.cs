@@ -1,12 +1,13 @@
 ﻿using Core.DataAccess;
-using Entity.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IRetailCustomerDal:IEntityRepository<RetailCustomers>
+    public interface IUserDal:IEntityRepository<User>
     {
+        List<OperationClaim> GetClaims(User user);
     }
 }

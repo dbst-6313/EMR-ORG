@@ -12,6 +12,8 @@ namespace Core.Entities.Concrete
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public long PhoneNumber { get; set; }
+        public int IsConfirmed { get; set; } = 0;
         public byte[] PasswordSalt { get; set; }
         public byte[] PasswordHash { get; set; }
        
