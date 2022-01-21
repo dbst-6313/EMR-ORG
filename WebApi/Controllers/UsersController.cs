@@ -52,7 +52,39 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("sendrequest")]
+        public IActionResult SendRequest(int userId)
+        {
+           
+            var result = _userService.SendConfirmationRequest(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("confirmrequest")]
+        public IActionResult ConfirmRequest(int userId)
+        {
 
+            var result = _userService.AcceptsRequest(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("denyrequest")]
+        public IActionResult DenyRequest(int userId)
+        {
+
+            var result = _userService.RedRequest(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPost("add")]
         public IActionResult Add(User user)

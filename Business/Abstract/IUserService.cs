@@ -15,5 +15,8 @@ namespace Business.Abstract
         IDataResult<User> GetById(int Id);
         List<OperationClaim> GetClaims(User user);
         User GetByMail(string email);
+        IResult SendConfirmationRequest(int userId);
+        IResult AcceptsRequest(int userId);
+        IResult RedRequest(int userId);
     }
 }

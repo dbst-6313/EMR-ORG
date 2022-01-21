@@ -26,13 +26,31 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
-
+        [SecuredOperation("admin")]
+        public IResult AcceptsRequest(int userId)
+        {
+            var user = _userDal.Get(p => p.Id == userId);
+            user.IsConfirmed = 1;
+            _userDal.Update(user);
+            return new SuccessResult("sa");
+        }
+  
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
             return new SuccessResult(Messages.UserDeleted);
         }
 
+        [SecuredOperation("admin")]
+        public IResult RedRequest(int userId)
+        {
+          var user =  _userDal.Get(p => p.Id == userId);
+            user.IsConfirmed = 2;
+            _userDal.Update(user);
+            return new SuccessResult("Sa");
+
+        }
+        [SecuredOperation("admin")]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
@@ -51,6 +69,15 @@ namespace Business.Concrete
         public List<OperationClaim> GetClaims(User user)
         {
             return _userDal.GetClaims(user);
+        }
+
+        public IResult SendConfirmationRequest(int userId)
+        {
+            var user = _userDal.Get(p => p.Id == userId);
+            user.IsConfirmed = 0;
+            _userDal.Update(user);
+            return new SuccessResult();
+
         }
 
         public IResult Update(User user)

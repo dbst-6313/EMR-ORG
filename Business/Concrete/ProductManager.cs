@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.AutoFac;
 using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -30,7 +31,7 @@ namespace Business.Concrete
             _productDal.Delete(product);
             return new SuccessResult(Messages.ProductDeleted);
         }
-
+        [SecuredOperation("admin")]
         public IDataResult<List<Products>> GetAll()
         {
             return new SuccessDataResult<List<Products>>(_productDal.GetAll());
