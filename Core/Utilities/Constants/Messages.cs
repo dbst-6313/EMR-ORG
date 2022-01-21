@@ -33,6 +33,9 @@ namespace Core.Utilities.Constants
         //User
         public static string UserAdded = "Kullanıcı eklendi";
         public static string UserDeleted = "Kullanıcı silindi";
+        public static string ProductAdded;
+        public static string ProductDeleted;
 
+        public static string ProductUpdated { get; set; }
     }
 }
