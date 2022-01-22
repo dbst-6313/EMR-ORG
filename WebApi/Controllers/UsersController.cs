@@ -40,6 +40,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getpendingreq")]
+        public IActionResult GetPendingRequests()
+        {
+            var result = _userService.GetPendingRequests();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpGet("deletebyid")]
         public IActionResult DeleteById(int userId)
@@ -57,6 +67,28 @@ namespace WebAPI.Controllers
         {
            
             var result = _userService.SendConfirmationRequest(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("giveperm")]
+        public IActionResult GivePerm(int userId,int permId)
+        {
+
+            var result = _userService.GivePermission(userId,permId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("deleteperm")]
+        public IActionResult DeletePerm(int userId)
+        {
+
+            var result = _userService.DeletePermission(userId);
             if (result.Success)
             {
                 return Ok(result);

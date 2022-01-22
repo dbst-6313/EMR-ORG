@@ -14,10 +14,12 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
+        IUserOperationClaimService  _userOperationClaimManager;
 
-        public UserManager(IUserDal userDal)
+        public UserManager(IUserDal userDal, IUserOperationClaimService userOperationClaimManager)
         {
             _userDal = userDal;
+            _userOperationClaimManager = userOperationClaimManager;
         }
 
 
@@ -26,7 +28,7 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
-        [SecuredOperation("accept.request,Admin")]
+        [SecuredOperation("admin")]
         public IResult AcceptsRequest(int userId)
         {
             
@@ -104,6 +106,55 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
+        [SecuredOperation("admin")]
+        public IDataResult<List<User>> GetPendingRequests()
+        {
 
+            var result = _userDal.GetAll(u => u.IsConfirmed == 0);
+           
+            foreach (var res in result)
+            {
+                res.PasswordHash = null;
+                res.PasswordSalt = null;
+            }
+
+            return new SuccessDataResult<List<User>>(result, "Listelendi");
+        }
+
+        public IResult GivePermission(int userId, int permId)
+        {
+            var data = _userDal.Get(u => u.Id == userId);
+            var operationClaim = _userOperationClaimManager.GetById(userId);
+
+
+            _userOperationClaimManager.Add(new UserOperationClaim
+            {
+                OperationClaimId = permId,
+                UserId = data.Id
+            });
+            return new SuccessResult();
+           
+            
+        }
+
+        public IResult DeletePermission(int userId)
+        {
+            var data = _userOperationClaimManager.GetAll().Data;
+            foreach (var datas in data)
+            {
+                if(datas.UserId == userId)
+                {
+                    var claim = _userOperationClaimManager.GetById(datas.UserId);
+                    _userOperationClaimManager.Delete(claim.Data);
+                }
+            }
+                
+            return new SuccessResult();
+        }
+
+        public IResult UpdatePermission(int userId, int permId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

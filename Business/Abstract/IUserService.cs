@@ -18,5 +18,10 @@ namespace Business.Abstract
         IResult SendConfirmationRequest(int userId);
         IResult AcceptsRequest(int userId);
         IResult RedRequest(int userId);
+        IDataResult<List<User>> GetPendingRequests();
+        IResult GivePermission(int userId,int permId);
+        IResult DeletePermission(int userId);
+
+        IResult UpdatePermission(int userId, int permId);
     }
 }
