@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Business.Abstract;
+using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
+using Entity.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    class EfCategoriesDal
+    public class EfCategoriesDal: EfEntityRepositoryBase<Categories, EmrOrgContext>, ICategoryDal
     {
     }
 }
