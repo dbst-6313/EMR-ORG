@@ -26,13 +26,23 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
-        [SecuredOperation("admin")]
+        [SecuredOperation("accept.request,Admin")]
         public IResult AcceptsRequest(int userId)
         {
+            
             var user = _userDal.Get(p => p.Id == userId);
-            user.IsConfirmed = 1;
-            _userDal.Update(user);
-            return new SuccessResult("sa");
+            if(user.IsConfirmed == 0)
+            {
+                user.IsConfirmed = 1;
+                _userDal.Update(user);
+                return new SuccessResult("sa");
+            }
+            else
+            {
+                return new ErrorResult("");
+            }
+            
+            
         }
   
         public IResult Delete(User user)
@@ -45,9 +55,18 @@ namespace Business.Concrete
         public IResult RedRequest(int userId)
         {
           var user =  _userDal.Get(p => p.Id == userId);
-            user.IsConfirmed = 2;
-            _userDal.Update(user);
-            return new SuccessResult("Sa");
+            if (user.IsConfirmed == 0 )
+            {
+                user.IsConfirmed = 2;
+                _userDal.Update(user);
+                return new SuccessResult("Sa");
+
+            }
+            else
+            {
+                return new ErrorResult();
+            }
+           
 
         }
         [SecuredOperation("admin")]

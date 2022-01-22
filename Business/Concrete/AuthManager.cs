@@ -29,13 +29,13 @@ namespace Business.Concrete
             var user = new User
             {
                 Email = userForRegisterDto.Email,
-                IsConfirmed = 0,
+                IsConfirmed = 2,
                 PhoneNumber = userForRegisterDto.PhoneNumber,
                 FirstName = userForRegisterDto.FirstName,
                 LastName = userForRegisterDto.LastName,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-
+                
             };
             _userService.Add(user);
             return new SuccessDataResult<User>(user, Messages.AuthRegister);
