@@ -32,10 +32,12 @@ namespace Business.BusinessAspects.AutoFac
             {
                 if (roleClaims.Contains(role))
                 {
+                   
                     return;
                 }
             }
             throw new Exception("İnvalid krdşm");
+
         }
     }
 }

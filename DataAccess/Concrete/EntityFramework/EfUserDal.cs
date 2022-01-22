@@ -13,11 +13,16 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (var context = new EmrOrgContext())
             {
-                var result = from operationClaim in context.operation_claims
-                             join userOperationClaim in context.user_operation_claims
-                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
-                             where userOperationClaim.UserId == user.Id
-                             select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name};
+                var result = from oc in context.operation_claims
+                             join uoc in context.user_operation_claims
+                             on oc.Id equals uoc.OperationClaimId
+                             where uoc.UserId == user.Id
+                             select new OperationClaim
+                             {
+                                 Id = oc.Id,
+                                 Name = oc.Name
+                             };
+
                 return result.ToList();
 
             }

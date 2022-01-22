@@ -24,6 +24,11 @@ namespace Core.Extensions
             claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentifier));
         }
 
+        public static void AddPhoneNumber(this ICollection<Claim> claims, long phoneNumber )
+        {
+            claims.Add(new Claim(ClaimTypes.OtherPhone, phoneNumber.ToString()));
+        }
+
         public static void AddRoles(this ICollection<Claim> claims, string[] roles)
         {
             roles.ToList().ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
