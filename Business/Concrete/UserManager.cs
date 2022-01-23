@@ -39,10 +39,9 @@ namespace Business.Concrete
                 _userDal.Update(user);
                 return new SuccessResult("sa");
             }
-            else
-            {
+            
                 return new ErrorResult("");
-            }
+            
             
             
         }

@@ -24,6 +24,7 @@ namespace Business.Concrete
 
         public IResult Delete(UserOperationClaim userOperationClaim)
         {
+          
             _userOperationClaimDal.Delete(userOperationClaim);
             return new SuccessResult();
         }
