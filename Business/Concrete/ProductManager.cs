@@ -47,6 +47,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.GetProductDetails(), "Hepsi listelendi");
         }
 
+        public IDataResult<List<ProductDetailsDto>> GetProductDetailsById(int id)
+        {
+            return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.GetProductDetailsById(id));
+        }
+
         public IResult Update(Products product)
         {
             _productDal.Update(product);
