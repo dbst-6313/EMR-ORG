@@ -15,5 +15,6 @@ namespace Entity.Concrete
         public int ProductPrice { get; set; }
         public int ProductDiscountedPrice { get; set; }
         public int UnitsInStock { get; set; }
+        public List<string> Images { get; set; }
     }
 }
