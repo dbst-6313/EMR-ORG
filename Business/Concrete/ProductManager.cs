@@ -51,6 +51,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.GetProductDetailsById(id));
         }
 
+        public IDataResult<List<ProductDetailsDto>> GetProductDetailsByCategoryId(int categoryId)
+        {
+            return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.GetProductDetails(p=>p.CategoryId==categoryId));
+        }
+
         public IResult Update(Products product)
         {
             _productDal.Update(product);
