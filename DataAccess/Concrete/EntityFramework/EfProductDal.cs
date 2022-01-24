@@ -26,6 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
                              
                               select new ProductDetailsDto
                               {
+                                  CategoryId = c.Id,
                                   BrandName = b.Name,
                                   CategoryName = c.Name,
                                   Id = p.Id,
@@ -52,6 +53,7 @@ namespace DataAccess.Concrete.EntityFramework
                               on p.BrandId equals b.Id
                               select new ProductDetailsDto
                               {
+                                  CategoryId = c.Id,
                                   BrandName = b.Name,
                                   CategoryName = c.Name,
                                   Id = p.Id,
