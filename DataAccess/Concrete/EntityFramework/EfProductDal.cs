@@ -23,8 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
                               on p.CategoryId equals c.Id
                               join b in context.brand
                               on p.BrandId equals b.Id
-                              join di in context.product_image
-                              on p.Id equals di.ProductId
+                             
                               select new ProductDetailsDto
                               {
                                   BrandName = b.Name,
@@ -51,8 +50,6 @@ namespace DataAccess.Concrete.EntityFramework
                               on p.CategoryId equals c.Id
                               join b in context.brand
                               on p.BrandId equals b.Id
-                              join di in context.product_image
-                              on p.Id equals di.ProductId
                               select new ProductDetailsDto
                               {
                                   BrandName = b.Name,
