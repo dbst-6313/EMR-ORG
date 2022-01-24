@@ -23,9 +23,13 @@ namespace DataAccess.Concrete.EntityFramework
                               on p.CategoryId equals c.Id
                               join b in context.brand
                               on p.BrandId equals b.Id
-                             
+                              join col in context.color
+                              on p.ColorId equals col.Id
                               select new ProductDetailsDto
                               {
+                                  ColorName = col.Name,
+                                  ProductDimensions = p.ProductDimensions,
+                                  ProductWeight = p.ProductWeight,
                                   CategoryId = c.Id,
                                   BrandName = b.Name,
                                   CategoryName = c.Name,
@@ -51,8 +55,13 @@ namespace DataAccess.Concrete.EntityFramework
                               on p.CategoryId equals c.Id
                               join b in context.brand
                               on p.BrandId equals b.Id
+                              join col in context.color
+                             on p.ColorId equals col.Id
                               select new ProductDetailsDto
                               {
+                                  ColorName = col.Name,
+                                  ProductDimensions = p.ProductDimensions,
+                                  ProductWeight = p.ProductWeight,
                                   CategoryId = c.Id,
                                   BrandName = b.Name,
                                   CategoryName = c.Name,
