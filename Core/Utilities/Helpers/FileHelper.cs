@@ -75,7 +75,7 @@ namespace Core.Utilities.Helpers
 
         private static IResult CheckFileTypeValid(string type)
         {
-            if (type != ".jpeg" && type != ".png" && type != ".jpg")
+            if (type.ToLower() != ".jpeg" && type.ToLower() != ".png" && type.ToLower() != ".jpg" && type.ToLower() !=".gif")
             {
                 return new ErrorResult("Yanlış dosya türü.");
             }
