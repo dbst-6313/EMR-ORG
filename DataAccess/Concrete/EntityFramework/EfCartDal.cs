@@ -34,10 +34,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  CategoryName = category.Name,
                                  ColorName = color.Name,
                                  Id = c.Id,
-                                 ProductWeight = p.ProductWeight
-                                  ,
+                                 ProductWeight = p.ProductWeight ,
                                  Quantity = c.Quantity,
-                                 UnitsInStock = p.UnitsInStock
+                                 UnitsInStock = p.UnitsInStock,
+                                 ProductShortDescription = p.ProductShortDescription
                              };
                 return result.ToList();
             }

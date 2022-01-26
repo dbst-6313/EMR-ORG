@@ -13,6 +13,7 @@ namespace Entity.Concrete
         public string ColorName { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public string ProductShortDescription { get; set; }
         public string ProductDimensions { get; set; }
         public int ProductPrice { get; set; }
         public int ProductDiscountedPrice { get; set; }
