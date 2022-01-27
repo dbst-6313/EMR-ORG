@@ -1,5 +1,4 @@
-﻿using Business.Abstract;
-using Core.DataAccess.EntityFramework;
+﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using System;
@@ -8,8 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoriesDal: EfEntityRepositoryBase<Categories, EmrOrgContext>, ICategoryDal
+    public class EfAddressDal:EfEntityRepositoryBase<Addresses,EmrOrgContext>,IAddressDal
     {
-       
     }
 }

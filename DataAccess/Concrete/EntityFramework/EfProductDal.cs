@@ -38,6 +38,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductDiscountedPrice = p.ProductDiscountedPrice,
                                   ProductName = p.ProductName,
                                   ProductPrice = p.ProductPrice,
+                                  ProductShortDescription = p.ProductShortDescription,
                                   UnitsInStock = p.UnitsInStock,
                                   Images = (from i in context.product_image where i.ProductId == p.Id select i.ImagePath).ToList(),
                               };
@@ -56,6 +57,7 @@ namespace DataAccess.Concrete.EntityFramework
                               join b in context.brand
                               on p.BrandId equals b.Id
                               join col in context.color
+
                              on p.ColorId equals col.Id
                               select new ProductDetailsDto
                               {
@@ -64,6 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductWeight = p.ProductWeight,
                                   CategoryId = c.Id,
                                   BrandName = b.Name,
+                                  ProductShortDescription = p.ProductShortDescription,
                                   CategoryName = c.Name,
                                   Id = p.Id,
                                   ProductDescription = p.ProductDescription,

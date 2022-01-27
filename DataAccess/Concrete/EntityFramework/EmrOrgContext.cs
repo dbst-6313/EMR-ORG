@@ -16,6 +16,8 @@ namespace DataAccess.Concrete.EntityFramework
        
         public DbSet<Brands> brand { get; set; }
         public DbSet<Categories> category { get; set; }
+        public DbSet<Addresses> address { get; set; }
+        public DbSet<PendingProducts> pending_product { get; set; }
         public DbSet<Carts> cart { get; set; }
         public DbSet<Products> product { get; set; }
         public DbSet<Colors> color { get; set; }
