@@ -37,7 +37,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  ProductWeight = p.ProductWeight ,
                                  Quantity = c.Quantity,
                                  UnitsInStock = p.UnitsInStock,
-                                 ProductShortDescription = p.ProductShortDescription
+                                 ProductShortDescription = p.ProductShortDescription,
+                                 Images = (from i in context.product_image where i.ProductId == p.Id select i.ImagePath).ToList(),
                              };
                 return result.ToList();
             }

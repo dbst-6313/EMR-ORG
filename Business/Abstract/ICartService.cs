@@ -13,5 +13,6 @@ namespace Business.Abstract
         IResult Update(Carts carts);
         IDataResult<List<Carts>> GetAll();
         IDataResult<List<CartDetailsDto>> GetCartDetails();
+        IDataResult<List<CartDetailsDto>> GetCartDetailsByUserId(int userId); 
     }
 }

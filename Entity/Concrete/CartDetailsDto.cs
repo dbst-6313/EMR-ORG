@@ -16,6 +16,7 @@ namespace Entity.Concrete
         public string ProductShortDescription { get; set; }
         public string ProductDimensions { get; set; }
         public int ProductPrice { get; set; }
+        public List<string> Images { get; set; }
         public int ProductDiscountedPrice { get; set; }
         public int ProductWeight { get; set; }
         public int UnitsInStock { get; set; }

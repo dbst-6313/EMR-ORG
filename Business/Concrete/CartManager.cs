@@ -45,6 +45,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CartDetailsDto>>(_cartsDal.GetCartDetails(), "sa");
         }
 
+        public IDataResult<List<CartDetailsDto>> GetCartDetailsByUserId(int userId)
+        {
+            return new SuccessDataResult<List<CartDetailsDto>>(_cartsDal.GetCartDetails(c => c.UserId == userId), "Succes");
+        }
+
         public IResult Update(Carts cart)
         {
             _cartsDal.Update(cart);
