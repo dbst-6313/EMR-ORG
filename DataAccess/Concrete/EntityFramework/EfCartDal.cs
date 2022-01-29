@@ -33,6 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandName = b.Name,
                                  CategoryName = category.Name,
                                  ColorName = color.Name,
+                                 ProductId=c.ProductId,
                                  Id = c.Id,
                                  ProductWeight = p.ProductWeight ,
                                  Quantity = c.Quantity,

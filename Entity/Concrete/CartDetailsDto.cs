@@ -8,6 +8,7 @@ namespace Entity.Concrete
     public class CartDetailsDto:IDto
     {
         public int Id { get; set; }
+        public int ProductId { get; set; }
         public string CategoryName { get; set; }
         public string BrandName { get; set; }
         public string ColorName { get; set; }
