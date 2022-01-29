@@ -20,8 +20,24 @@ namespace Business.Concrete
 
         public IResult Add(Carts cart)
         {
-            _cartsDal.Add(cart);
+            var allCarts = _cartsDal.GetAll();
+            bool isUpdated = false;
+            foreach (var item in allCarts)
+            {
+                if (cart.ProductId == item.ProductId)
+                {
+                    cart.Quantity = item.Quantity+cart.Quantity;
+                    cart.Id = item.Id;
+                    _cartsDal.Update(cart);
+                    isUpdated = true;
+                }
+            }
+            if (isUpdated==false)
+            {
+                _cartsDal.Add(cart);
+            }
             return new SuccessResult(Messages.BrandAdded);
+
         }
 
         public IResult Delete(Carts cart)
