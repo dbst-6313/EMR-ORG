@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AddressController : Controller
     {
         private IAddressService _AddressService;
-
+    
         public AddressController(IAddressService AddressService)
         {
             _AddressService = AddressService;

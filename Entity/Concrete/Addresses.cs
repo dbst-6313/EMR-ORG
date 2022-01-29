@@ -13,6 +13,7 @@ namespace Entity.Concrete
         public string Neighborhood { get; set; }
         public string Street { get; set; }
         public string HouseId { get; set; }
+        public string District { get; set; }
         public string ExtraDescription { get; set; }
     }
 }
