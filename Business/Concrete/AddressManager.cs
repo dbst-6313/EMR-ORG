@@ -34,9 +34,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Addresses>>(_addressDal.GetAll());
         }
 
-        public IDataResult<List<Addresses>> GetById(int Id)
+        public IDataResult<Addresses> GetById(int Id)
         {
-            return new SuccessDataResult<List<Addresses>>(_addressDal.GetAll(a=>a.Id == Id));
+            return new SuccessDataResult<Addresses>(_addressDal.Get(a=>a.UserId == Id));
         }
 
         public IResult Update(Addresses address)
