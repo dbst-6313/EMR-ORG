@@ -28,6 +28,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Street=address.Street,
                                  FirstName =  user.FirstName,
                                  City = address.City,
+                                 ProductDate=pp.ProductDate,
+                                 Quantity=pp.Quantity,
                                  ExtraDescription = address.ExtraDescription,
                                  Email = user.Email,
                                  HouseId = address.HouseId,

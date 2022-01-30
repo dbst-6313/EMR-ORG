@@ -21,5 +21,8 @@ namespace Entity.Concrete
         public string Street { get; set; }
         public string HouseId { get; set; }
         public string ExtraDescription { get; set; }
+        public DateTime ProductDate { get; set; } = DateTime.Now;
+        public int Quantity { get; set; }
+
     }
 }
