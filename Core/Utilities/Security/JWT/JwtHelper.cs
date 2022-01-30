@@ -57,14 +57,12 @@ namespace Core.Utilities.Security.JWT
         private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
-            string strHash = Encoding.Default.GetString(user.PasswordHash);
-            string strSalt = Encoding.Default.GetString(user.PasswordSalt);
+           
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
-            claims.AddPasswordHash(strHash);
-            claims.AddPasswordSalt(strSalt);
+        
             claims.AddPhoneNumber(user.PhoneNumber);
             return claims;
         }
