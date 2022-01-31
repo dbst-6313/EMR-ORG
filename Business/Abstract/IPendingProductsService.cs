@@ -13,5 +13,6 @@ namespace Business.Abstract
         IResult Update(PendingProducts pendingProducts);
         IDataResult<List<PendingProducts>> GetAll();
         IDataResult<List<PendingRequestDetailDto>> GetAllDetailsByUserId(int userId);
+        IDataResult<List<PendingRequestDetailDto>> GetAllDetail();
     }
 }
