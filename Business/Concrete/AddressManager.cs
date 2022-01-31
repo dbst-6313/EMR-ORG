@@ -19,8 +19,14 @@ namespace Business.Concrete
 
         public IResult Add(Addresses address)
         {
-            _addressDal.Add(address);
-            return new SuccessResult("");
+            var addresss = _addressDal.GetAll();
+            if(addresss.Count > 1)
+            {
+                _addressDal.Add(address);
+                return new SuccessResult("");
+            }
+
+            return new ErrorResult("");
         }
 
         public IResult Delete(Addresses address)
