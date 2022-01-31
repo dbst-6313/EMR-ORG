@@ -4,6 +4,7 @@ using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
+using Entity.Concrete;
 using Entity.DTOs;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,23 @@ namespace Business.Concrete
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+        }
+
+        public IDataResult<PasswordDto> CreateHash(string password)
+        {
+            byte[] passwordSalt, passwordHash;
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+            var hashedPassword =
+            new PasswordDto
+            {
+                PasswordSalt = passwordSalt,
+                PasswordHash = passwordHash
+            };
+            return new SuccessDataResult<PasswordDto>(hashedPassword,"Selam :D");
         }
     }
 }

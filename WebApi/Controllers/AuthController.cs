@@ -19,6 +19,16 @@ namespace WebAPI.Controllers
         {
             _authService = authService;
         }
+        [HttpGet("gethashedpassword")]
+        public ActionResult GetHashedPassword (string password){
+            var hashedPassword = _authService.CreateHash(password);
+            if (!hashedPassword.Success)
+            {
+                return BadRequest("Sakses");
+            }
+
+            return Ok(hashedPassword);
+        }
 
         [HttpPost("login")]
         public ActionResult Login(UserForLoginDto userForLoginDto)
