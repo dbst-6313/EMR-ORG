@@ -39,6 +39,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on user.Id equals userOperationClaim.UserId
                              join operationClaims in context.operation_claims
                              on userOperationClaim.OperationClaimId equals operationClaims.Id
+                             
                              select new UserForListDto
                              {
                                  ClaimName = operationClaims.Name,
@@ -51,6 +52,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  UserOperationClaimId= userOperationClaim.Id
                                  
                              };
+            
 
                 return result.ToList();
 

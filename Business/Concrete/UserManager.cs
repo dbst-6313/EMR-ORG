@@ -5,6 +5,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Business.Concrete
     {
         IUserDal _userDal;
         IUserOperationClaimService  _userOperationClaimManager;
+        private EfUserDal efUserDal;
 
         public UserManager(IUserDal userDal, IUserOperationClaimService userOperationClaimManager)
         {
@@ -23,6 +25,7 @@ namespace Business.Concrete
             _userOperationClaimManager = userOperationClaimManager;
         }
 
+     
 
         public IResult Add(User user)
         {
@@ -158,7 +161,10 @@ namespace Business.Concrete
 
         public IDataResult<List<UserForListDto>> GetUserForListDto()
         {
-            return new SuccessDataResult<List<UserForListDto>>(_userDal.GetUserForListDtos(), "s");
+          
+           
+          
+            return new SuccessDataResult<List<UserForListDto>>(_userDal.GetUserForListDtos());
         }
     }
 }
