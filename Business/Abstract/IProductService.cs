@@ -12,6 +12,7 @@ namespace Business.Abstract
         IResult Update(Products product);
         IResult Delete(Products product);
         IDataResult<List<Products>> GetAll();
+        IDataResult<List<Colors>> GetAllColors();
         IDataResult<Products> GetById(int Id);
         IDataResult<List<ProductDetailsDto>> GetProductDetails();
         IDataResult<List<ProductDetailsDto>> GetProductDetailsById(int id);

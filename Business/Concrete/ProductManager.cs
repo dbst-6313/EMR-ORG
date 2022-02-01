@@ -14,10 +14,11 @@ namespace Business.Concrete
     {
 
         IProductDal _productDal;
-
-        public ProductManager(IProductDal productDal)
+        IColorDal _colorDal;
+        public ProductManager(IProductDal productDal, IColorDal colorDal)
         {
             _productDal = productDal;
+            _colorDal = colorDal;
         }
 
         public IResult Add(Products product)
@@ -60,6 +61,11 @@ namespace Business.Concrete
         {
             _productDal.Update(product);
             return new SuccessResult(Messages.ProductUpdated);
+        }
+
+        public IDataResult<List<Colors>> GetAllColors()
+        {
+            return new SuccessDataResult<List<Colors>>(_colorDal.GetAll());
         }
     }
 }
