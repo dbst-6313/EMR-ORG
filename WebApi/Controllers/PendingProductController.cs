@@ -73,6 +73,46 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("changeproductstatetrue")]
+        public IActionResult ChangeProductStateTrue(int userId)
+        {
+            var result = _PendingProductsService.ChangeDoneStateTrue(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("ChangeProductStateFalse")]
+        public IActionResult ChangeProductStateFalse(int userId)
+        {
+            var result = _PendingProductsService.ChangeDoneStateFalse(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getdoneproducts")]
+        public IActionResult GetDoneProducts()
+        {
+            var result = _PendingProductsService.GetAllDoneProducts();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getundoneproducts")]
+        public IActionResult GetUnDoneProducts()
+        {
+            var result = _PendingProductsService.GetAllUncompletedProducts();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPost("delete")]
         public IActionResult Delete(PendingProducts PendingProducts)

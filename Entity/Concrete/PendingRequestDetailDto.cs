@@ -16,6 +16,7 @@ namespace Entity.Concrete
         public string Email { get; set; }
         public long PhoneNumber { get; set; }
         public int IsConfirmed { get; set; } = 2;
+        public int isDone { get; set; } = 0;
         public string City { get; set; }
         public string Neighborhood { get; set; }
         public string Street { get; set; }

@@ -12,6 +12,7 @@ namespace Entity.Concrete
         public int ProductId { get; set; }
         public int AddressId { get; set; }
         public int Quantity { get; set; }
+        public int isDone { get; set; }
         public DateTime ProductDate { get; set; } = DateTime.Now;
 
     }

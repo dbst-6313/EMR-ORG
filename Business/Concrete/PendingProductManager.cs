@@ -23,6 +23,28 @@ namespace Business.Concrete
             return new SuccessResult("");
         }
 
+        public IResult ChangeDoneStateFalse(int pendingProductId)
+        {
+            var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
+            if (product.isDone != 0)
+            {
+                product.isDone = 1;
+            }
+            _PendingProductsDal.Update(product);
+            return new SuccessResult();
+        }
+
+        public IResult ChangeDoneStateTrue(int pendingProductId)
+        {
+            var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
+            if (product.isDone != 1)
+            {
+                product.isDone = 0;
+            }
+            _PendingProductsDal.Update(product);
+            return new SuccessResult();
+        }
+
         public IResult Delete(PendingProducts PendingProducts)
         {
             _PendingProductsDal.Delete(PendingProducts);
@@ -42,6 +64,15 @@ namespace Business.Concrete
         public IDataResult<List<PendingRequestDetailDto>> GetAllDetailsByUserId(int userId)
         {
             return new SuccessDataResult<List<PendingRequestDetailDto>>(_PendingProductsDal.GetPendingRequestDetailDto(p => p.UserId == userId));
+        }
+
+        public IDataResult<List<PendingRequestDetailDto>> GetAllDoneProducts()
+        {
+            return new SuccessDataResult<List<PendingRequestDetailDto>>(_PendingProductsDal.GetPendingRequestDetailDto(p=>p.isDone == 1));
+        }
+        public IDataResult<List<PendingRequestDetailDto>> GetAllUncompletedProducts()
+        {
+            return new SuccessDataResult<List<PendingRequestDetailDto>>(_PendingProductsDal.GetPendingRequestDetailDto(p => p.isDone == 0));
         }
 
         public IDataResult<PendingProducts> GetById(int Id)
