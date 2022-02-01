@@ -35,6 +35,8 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<AddressManager>().As<IAddressService>().SingleInstance();
             builder.RegisterType<EfAddressDal>().As<IAddressDal>().SingleInstance();
+            builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
+
 
             builder.RegisterType<PendingProductManager>().As<IPendingProductsService>().SingleInstance();
             builder.RegisterType<EfPendingProductDal>().As<IPendingProductsDal>().SingleInstance();
