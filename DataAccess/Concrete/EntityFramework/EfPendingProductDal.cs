@@ -25,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on pp.UserId equals address.UserId
                               select new PendingRequestDetailDto
                               {
+                                  TotalPrice = pp.TotalPrice,
                                   isDone=pp.isDone,
                                  Street=address.Street,
                                  FirstName =  user.FirstName,

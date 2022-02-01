@@ -62,6 +62,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getuserforlistdto")]
+        public IActionResult GetUserForList()
+        {
+            var result = _userService.GetUserForListDto();
+   
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpPost("sendrequest")]
         public IActionResult SendRequest(int userId)
         {

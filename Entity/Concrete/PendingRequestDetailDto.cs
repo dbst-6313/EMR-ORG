@@ -10,6 +10,7 @@ namespace Entity.Concrete
         public int Id { get; set; }
         public string ProductName { get; set; }
         public int ProductId { get; set; }
+        public int TotalPrice { get; set; }
         public string ProductShortDescription { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

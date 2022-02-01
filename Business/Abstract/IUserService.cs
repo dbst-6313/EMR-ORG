@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Business.Abstract
         IResult AcceptsRequest(int userId);
         IResult RedRequest(int userId);
         IDataResult<List<User>> GetPendingRequests();
+        IDataResult<List<UserForListDto>> GetUserForListDto();
         IResult GivePermission(int userId,int permId);
         IResult DeletePermission(int userId);
 

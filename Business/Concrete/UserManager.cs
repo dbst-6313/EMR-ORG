@@ -5,6 +5,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -153,6 +154,11 @@ namespace Business.Concrete
         public IResult UpdatePermission(int userId, int permId)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<UserForListDto>> GetUserForListDto()
+        {
+            return new SuccessDataResult<List<UserForListDto>>(_userDal.GetUserForListDtos(), "s");
         }
     }
 }
