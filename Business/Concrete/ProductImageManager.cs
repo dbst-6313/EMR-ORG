@@ -21,7 +21,7 @@ namespace Business.Concrete
         {
             _ProductImageDal = ProductImageDal;
         }
-
+      
         public IResult Add(IFormFile file, ProductImages ProductImage)
         {
             var imageLımıt = _ProductImageDal.GetAll(d => d.ProductId == ProductImage.ProductId).Count;

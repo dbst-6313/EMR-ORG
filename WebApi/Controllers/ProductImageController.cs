@@ -54,16 +54,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm(Name = ("Image"))] IFormFile file, [FromQuery] ProductImages productImage)
+        public IActionResult Add([FromForm] ProductImages productImages,[FromForm(Name ="Image")] IFormFile file)
         {
-            var result = _productImageService.Add(file, productImage);
+            var result = _productImageService.Add(file, productImages);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
         [HttpPost("delete")]
         public IActionResult Delete([FromForm(Name = ("Id"))] int Id)
         {
