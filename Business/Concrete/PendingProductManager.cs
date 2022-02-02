@@ -26,10 +26,7 @@ namespace Business.Concrete
         public IResult ChangeDoneStateFalse(int pendingProductId)
         {
             var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
-            if (product.isDone != 0)
-            {
-                product.isDone = 1;
-            }
+                product.isDone = 0;
             _PendingProductsDal.Update(product);
             return new SuccessResult();
         }
@@ -37,10 +34,7 @@ namespace Business.Concrete
         public IResult ChangeDoneStateTrue(int pendingProductId)
         {
             var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
-            if (product.isDone != 1)
-            {
-                product.isDone = 0;
-            }
+                product.isDone = 1;
             _PendingProductsDal.Update(product);
             return new SuccessResult();
         }

@@ -83,7 +83,7 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("ChangeProductStateFalse")]
+        [HttpPost("changeproductstatefalse")]
         public IActionResult ChangeProductStateFalse(int id)
         {
             var result = _PendingProductsService.ChangeDoneStateFalse(id);
