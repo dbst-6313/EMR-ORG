@@ -18,11 +18,11 @@ namespace DataAccess.Concrete.EntityFramework
                              join p in context.product
                              on c.Id equals p.Id
                              join b in context.brand
-                             on c.BrandId equals b.Id
+                             on p.BrandId equals b.Id
                              join category in context.category
-                             on c.CategoryId equals category.Id
+                             on p.CategoryId equals category.Id
                              join color in context.color
-                             on c.ColorId equals color.Id
+                             on p.ColorId equals color.Id
                              select new CartDetailsDto
                              {
                                  ProductDescription = p.ProductDescription,
@@ -53,11 +53,11 @@ namespace DataAccess.Concrete.EntityFramework
                              join product in context.product
                              on cart.ProductId equals product.Id
                              join brand in context.brand
-                             on cart.BrandId equals brand.Id
+                             on product.BrandId equals brand.Id
                              join color in context.color
-                             on cart.ColorId equals color.Id
+                             on product.ColorId equals color.Id
                              join category in context.category
-                             on cart.CategoryId equals category.Id
+                             on product.CategoryId equals category.Id
                              select new CartDetailsDto
                              {
                                  ProductShortDescription = product.ProductShortDescription,
