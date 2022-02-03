@@ -49,7 +49,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 using (var context = new EmrOrgContext())
                 {
-                    var result = from c in context.cart where c.UserId== userId
+                    var result = from c in context.cart
                                  join p in context.product
                                  on c.Id equals p.Id
                                  join b in context.brand
