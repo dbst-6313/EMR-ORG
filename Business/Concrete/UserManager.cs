@@ -94,12 +94,25 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
-        public IResult SendConfirmationRequest(int userId)
+        public IDataResult<User> SendConfirmationRequest(int userId)
         {
             var user = _userDal.Get(p => p.Id == userId);
+            var tempUser = new User
+            {
+                FirstName = user.FirstName,
+                Email = user.Email,
+                Id = user.Id,
+
+                IsConfirmed = user.IsConfirmed,
+                LastName = user.LastName,
+                PasswordHash = null,
+                PasswordSalt = null,
+                PhoneNumber = user.PhoneNumber
+            };
             user.IsConfirmed = 0;
+            
             _userDal.Update(user);
-            return new SuccessResult();
+            return new SuccessDataResult<User>(tempUser);
 
         }
 

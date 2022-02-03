@@ -73,7 +73,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("sendrequest")]
+        [HttpGet("sendrequest")]
         public IActionResult SendRequest(int userId)
         {
            

@@ -18,11 +18,11 @@ namespace DataAccess.Concrete.EntityFramework
                              join p in context.product
                              on c.Id equals p.Id
                              join b in context.brand
-                             on p.BrandId equals b.Id
+                             on c.BrandId equals b.Id
                              join category in context.category
-                             on p.CategoryId equals category.Id
+                             on c.CategoryId equals category.Id
                              join color in context.color
-                             on p.ColorId equals color.Id
+                             on c.ColorId equals color.Id
                              select new CartDetailsDto
                              {
                                  ProductDescription = p.ProductDescription,
@@ -33,7 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandName = b.Name,
                                  CategoryName = category.Name,
                                  ColorName = color.Name,
-                                 ProductId = c.ProductId,
+                                
                                  Id = c.Id,
                                  ProductWeight = p.ProductWeight,
                                  Quantity = c.Quantity,
@@ -49,35 +49,35 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 using (var context = new EmrOrgContext())
                 {
-                    var result = from c in context.cart
-                                 join p in context.product
-                                 on c.Id equals p.Id
-                                 join b in context.brand
-                                 on p.BrandId equals b.Id
-                                 join category in context.category
-                                 on p.CategoryId equals category.Id
-                                 join color in context.color
-                                 on p.ColorId equals color.Id
-                                 select new CartDetailsDto
-                                 {
-                                     UserId = c.UserId,
-                                     ProductDescription = p.ProductDescription,
-                                     ProductDimensions = p.ProductDimensions,
-                                     ProductDiscountedPrice = p.ProductDiscountedPrice,
-                                     ProductName = p.ProductName,
-                                     ProductPrice = p.ProductPrice,
-                                     BrandName = b.Name,
-                                     CategoryName = category.Name,
-                                     ColorName = color.Name,
-                                     ProductId = c.ProductId,
-                                     Id = c.Id,
-                                     ProductWeight = p.ProductWeight,
-                                     Quantity = c.Quantity,
-                                     UnitsInStock = p.UnitsInStock,
-                                     ProductShortDescription = p.ProductShortDescription,
-                                     Images = (from i in context.product_image where i.ProductId == p.Id select i.ImagePath).ToList(),
-                                 };
-                    return result.Where(p => p.UserId == userId).ToList();
+                var result = from cart in context.cart where cart.UserId == userId
+                             join product in context.product
+                             on cart.ProductId equals product.Id
+                             join brand in context.brand
+                             on cart.BrandId equals brand.Id
+                             join color in context.color
+                             on cart.ColorId equals color.Id
+                             join category in context.category
+                             on cart.CategoryId equals category.Id
+                             select new CartDetailsDto
+                             {
+                                 ProductShortDescription = product.ProductShortDescription,
+                                 UnitsInStock = product.UnitsInStock,
+                                 BrandName = brand.Name,
+                                 CategoryName = category.Name,
+                                 ColorName = color.Name,
+                                 Id = cart.Id,
+                                 Images = (from i in context.product_image where i.ProductId == cart.ProductId select i.ImagePath).ToList(),
+                                 ProductDescription = product.ProductDescription,
+                                 ProductDimensions = product.ProductDimensions,
+                                 ProductDiscountedPrice = product.ProductDiscountedPrice,
+                                 ProductName = product.ProductName,
+                                 ProductPrice = product.ProductPrice,
+                                 ProductWeight = product.ProductWeight,
+                                 Quantity = cart.Quantity
+
+
+                             };
+                return result.ToList();
                 }
             }
     }
