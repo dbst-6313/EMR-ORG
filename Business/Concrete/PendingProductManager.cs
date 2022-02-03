@@ -23,20 +23,20 @@ namespace Business.Concrete
             return new SuccessResult("");
         }
 
-        public IResult ChangeDoneStateFalse(int pendingProductId)
+        public IDataResult<PendingProducts> ChangeDoneStateFalse(int pendingProductId)
         {
             var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
                 product.isDone = 0;
             _PendingProductsDal.Update(product);
-            return new SuccessResult();
+            return new SuccessDataResult<PendingProducts>(product);
         }
 
-        public IResult ChangeDoneStateTrue(int pendingProductId)
+        public IDataResult<PendingProducts> ChangeDoneStateTrue(int pendingProductId)
         {
             var product = _PendingProductsDal.Get(p => p.Id == pendingProductId);
                 product.isDone = 1;
             _PendingProductsDal.Update(product);
-            return new SuccessResult();
+            return new SuccessDataResult<PendingProducts>(product);
         }
 
         public IResult Delete(PendingProducts PendingProducts)

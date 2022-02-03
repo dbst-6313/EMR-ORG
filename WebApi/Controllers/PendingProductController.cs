@@ -73,7 +73,7 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("changeproductstatetrue")]
+        [HttpGet("changeproductstatetrue")]
         public IActionResult ChangeProductStateTrue(int id)
         {
             var result = _PendingProductsService.ChangeDoneStateTrue(id);
@@ -83,7 +83,7 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("changeproductstatefalse")]
+        [HttpGet("changeproductstatefalse")]
         public IActionResult ChangeProductStateFalse(int id)
         {
             var result = _PendingProductsService.ChangeDoneStateFalse(id);
