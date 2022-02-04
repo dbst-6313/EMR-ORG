@@ -21,5 +21,6 @@ namespace Entity.Concrete
         public int ProductWeight { get; set; }
         public int UnitsInStock { get; set; }
         public int Quantity { get; set; }
+        public int ProductId { get; set; }
     }
 }
