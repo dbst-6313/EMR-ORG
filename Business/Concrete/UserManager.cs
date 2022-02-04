@@ -182,7 +182,7 @@ namespace Business.Concrete
         {
             var user = _userDal.Get(u => u.Id == userId);
             var operationClaim = _userOperationClaimManager.GetById(userId);
-
+           
             var tempUser = new User
             {
                 FirstName = user.FirstName,
@@ -197,6 +197,7 @@ namespace Business.Concrete
             };
             _userOperationClaimManager.Update(new UserOperationClaim
             {
+               Id = operationClaim.Data.Id,
                 OperationClaimId = permId,
                 UserId = user.Id
             });
