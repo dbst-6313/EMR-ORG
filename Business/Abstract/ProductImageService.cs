@@ -14,7 +14,7 @@ namespace Business.Abstract
         IDataResult<List<ProductImages>> GetAll();
         IDataResult<List<ProductImages>> GetImagesByDonateId(int productId);
         IDataResult<ProductImages> GetById(int Id);
-        IResult Add(IFormFile file, ProductImages productImages);
+        IResult Add(ProductImages productImages, IFormFile file);
         IResult Update(IFormFile file, ProductImages productImages);
         IResult Delete(ProductImages productImages);
     }

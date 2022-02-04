@@ -106,7 +106,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("giveperm")]
+        [HttpGet("giveperm")]
         public IActionResult GivePerm(int userId,int permId)
         {
 

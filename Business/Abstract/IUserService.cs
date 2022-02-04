@@ -23,7 +23,7 @@ namespace Business.Abstract
         IDataResult<List<User>> GetAcceptRequest();
         IDataResult<List<User>> GetRetailUser();
         IDataResult<List<UserForListDto>> GetUserForListDto();
-        IResult GivePermission(int userId,int permId);
+        IDataResult<User> GivePermission(int userId,int permId);
         IResult DeletePermission(int userId);
 
         IResult UpdatePermission(int userId, int permId);

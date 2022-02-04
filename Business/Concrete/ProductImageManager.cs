@@ -22,7 +22,7 @@ namespace Business.Concrete
             _ProductImageDal = ProductImageDal;
         }
       
-        public IResult Add(IFormFile file, ProductImages ProductImage)
+        public IResult Add(ProductImages ProductImage,IFormFile file)
         {
             var imageLımıt = _ProductImageDal.GetAll(d => d.ProductId == ProductImage.ProductId).Count;
             if (imageLımıt > 6)

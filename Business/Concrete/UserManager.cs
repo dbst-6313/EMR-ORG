@@ -178,18 +178,29 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(result, "Listelendi");
         }
 
-        public IResult GivePermission(int userId, int permId)
+        public IDataResult<User> GivePermission(int userId, int permId)
         {
-            var data = _userDal.Get(u => u.Id == userId);
+            var user = _userDal.Get(u => u.Id == userId);
             var operationClaim = _userOperationClaimManager.GetById(userId);
 
+            var tempUser = new User
+            {
+                FirstName = user.FirstName,
+                Email = user.Email,
+                Id = user.Id,
 
-            _userOperationClaimManager.Add(new UserOperationClaim
+                IsConfirmed = user.IsConfirmed,
+                LastName = user.LastName,
+                PasswordHash = null,
+                PasswordSalt = null,
+                PhoneNumber = user.PhoneNumber
+            };
+            _userOperationClaimManager.Update(new UserOperationClaim
             {
                 OperationClaimId = permId,
-                UserId = data.Id
+                UserId = user.Id
             });
-            return new SuccessResult();
+            return new SuccessDataResult<User>(tempUser);
            
             
         }
