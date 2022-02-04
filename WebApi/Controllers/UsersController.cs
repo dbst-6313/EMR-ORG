@@ -51,6 +51,28 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getacceptreq")]
+        public IActionResult GetAcceptRequest()
+        {
+            var result = _userService.GetAcceptRequest();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getretailuser")]
+        public IActionResult GetRetailUser()
+        {
+            var result = _userService.GetRetailUser();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("deletebyid")]
         public IActionResult DeleteById(int userId)
         {
@@ -106,7 +128,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("confirmrequest")]
+        [HttpGet("confirmrequest")]
         public IActionResult ConfirmRequest(int userId)
         {
 
@@ -117,7 +139,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("denyrequest")]
+        [HttpGet("denyrequest")]
         public IActionResult DenyRequest(int userId)
         {
 

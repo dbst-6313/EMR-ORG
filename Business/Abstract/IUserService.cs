@@ -17,9 +17,11 @@ namespace Business.Abstract
         List<OperationClaim> GetClaims(User user);
         User GetByMail(string email);
         IDataResult<User> SendConfirmationRequest(int userId);
-        IResult AcceptsRequest(int userId);
-        IResult RedRequest(int userId);
+        IDataResult<User> AcceptsRequest(int userId);
+        IDataResult<User> RedRequest(int userId);
         IDataResult<List<User>> GetPendingRequests();
+        IDataResult<List<User>> GetAcceptRequest();
+        IDataResult<List<User>> GetRetailUser();
         IDataResult<List<UserForListDto>> GetUserForListDto();
         IResult GivePermission(int userId,int permId);
         IResult DeletePermission(int userId);

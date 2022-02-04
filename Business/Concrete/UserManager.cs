@@ -32,19 +32,30 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
-        [SecuredOperation("admin")]
-        public IResult AcceptsRequest(int userId)
+        public IDataResult<User> AcceptsRequest(int userId)
         {
             
             var user = _userDal.Get(p => p.Id == userId);
-            if(user.IsConfirmed == 0)
+            //var tempUser = new User
+            //{
+            //    FirstName = user.FirstName,
+            //    Email = user.Email,
+            //    Id = user.Id,
+
+            //    IsConfirmed = user.IsConfirmed,
+            //    LastName = user.LastName,
+            //    PasswordHash = null,
+            //    PasswordSalt = null,
+            //    PhoneNumber = user.PhoneNumber
+            //};
+            if (user.IsConfirmed == 0)
             {
                 user.IsConfirmed = 1;
                 _userDal.Update(user);
-                return new SuccessResult("sa");
+                return new SuccessDataResult<User>(user);
             }
             
-                return new ErrorResult("");
+                return new ErrorDataResult<User>(user);
             
             
             
@@ -56,25 +67,29 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        [SecuredOperation("admin")]
-        public IResult RedRequest(int userId)
+        public IDataResult<User> RedRequest(int userId)
         {
           var user =  _userDal.Get(p => p.Id == userId);
-            if (user.IsConfirmed == 0 )
+            var tempUser = new User
             {
-                user.IsConfirmed = 2;
+                FirstName = user.FirstName,
+                Email = user.Email,
+                Id = user.Id,
+
+                IsConfirmed = user.IsConfirmed,
+                LastName = user.LastName,
+                PasswordHash = null,
+                PasswordSalt = null,
+                PhoneNumber = user.PhoneNumber
+            };
+            user.IsConfirmed = 2;
                 _userDal.Update(user);
-                return new SuccessResult("Sa");
+                return new SuccessDataResult<User>(tempUser);
 
-            }
-            else
-            {
-                return new ErrorResult();
-            }
-           
-
+                return new ErrorDataResult<User>(tempUser);
+  
+     
         }
-        [SecuredOperation("admin")]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
@@ -121,12 +136,39 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
-        [SecuredOperation("admin")]
         public IDataResult<List<User>> GetPendingRequests()
         {
 
             var result = _userDal.GetAll(u => u.IsConfirmed == 0);
            
+            foreach (var res in result)
+            {
+                res.PasswordHash = null;
+                res.PasswordSalt = null;
+            }
+
+            return new SuccessDataResult<List<User>>(result, "Listelendi");
+        }
+
+        public IDataResult<List<User>> GetAcceptRequest()
+        {
+
+            var result = _userDal.GetAll(u => u.IsConfirmed == 1);
+
+            foreach (var res in result)
+            {
+                res.PasswordHash = null;
+                res.PasswordSalt = null;
+            }
+
+            return new SuccessDataResult<List<User>>(result, "Listelendi");
+        }
+
+        public IDataResult<List<User>> GetRetailUser()
+        {
+
+            var result = _userDal.GetAll(u => u.IsConfirmed == 2);
+
             foreach (var res in result)
             {
                 res.PasswordHash = null;

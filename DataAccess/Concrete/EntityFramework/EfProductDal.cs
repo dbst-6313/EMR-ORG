@@ -34,7 +34,9 @@ namespace DataAccess.Concrete.EntityFramework
                                   BrandName = b.Name,
                                   BrandId = p.BrandId,
                                   CategoryName = c.Name,
+                                  ColorId=col.Id,
                                   Id = p.Id,
+                                  
                                   ProductDescription = p.ProductDescription,
                                   ProductDiscountedPrice = p.ProductDiscountedPrice,
                                   ProductName = p.ProductName,
@@ -71,6 +73,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductShortDescription = p.ProductShortDescription,
                                   CategoryName = c.Name,
                                   Id = p.Id,
+                                  ColorId=col.Id,
                                   ProductDescription = p.ProductDescription,
                                   ProductDiscountedPrice = p.ProductDiscountedPrice,
                                   ProductName = p.ProductName,

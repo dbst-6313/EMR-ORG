@@ -33,7 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandName = b.Name,
                                  CategoryName = category.Name,
                                  ColorName = color.Name,
-                                
+                                 ProductId=p.Id,
                                  Id = c.Id,
                                  ProductWeight = p.ProductWeight,
                                  Quantity = c.Quantity,
@@ -66,6 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CategoryName = category.Name,
                                  ColorName = color.Name,
                                  Id = cart.Id,
+                                 ProductId = product.Id,
                                  Images = (from i in context.product_image where i.ProductId == cart.ProductId select i.ImagePath).ToList(),
                                  ProductDescription = product.ProductDescription,
                                  ProductDimensions = product.ProductDimensions,
