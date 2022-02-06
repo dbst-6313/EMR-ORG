@@ -57,7 +57,7 @@ namespace Business.Concrete
 
         public IDataResult<List<PendingRequestDetailDto>> GetAllDetailsByUserId(int userId)
         {
-            return new SuccessDataResult<List<PendingRequestDetailDto>>(_PendingProductsDal.GetPendingRequestDetailDto(p => p.UserId == userId));
+            return new SuccessDataResult<List<PendingRequestDetailDto>>(_PendingProductsDal.GetPendingRequestDetailDto(p => p.UserId == userId && p.isDone == 0));
         }
 
         public IDataResult<List<PendingRequestDetailDto>> GetAllDoneProducts()
