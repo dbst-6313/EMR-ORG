@@ -42,7 +42,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
          
-        [HttpGet("getdetailsbyuserid")]
+        [HttpGet("getdetailsbyuser")]
         public IActionResult GetCartDetailsByUserId(int userId)
         {
             var result = _cartService.GetCartDetailsByUserId(userId);
