@@ -23,5 +23,6 @@ namespace Entity.Concrete
         public int ProductDiscountedPrice { get; set; }
         public int UnitsInStock { get; set; }
         public List<string> Images { get; set; }
+        public int View { get; set; } = 0;
     }
 }

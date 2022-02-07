@@ -36,8 +36,8 @@ namespace DataAccess.Concrete.EntityFramework
                                   CategoryName = c.Name,
                                   ColorId=col.Id,
                                   Id = p.Id,
-                                  
                                   ProductDescription = p.ProductDescription,
+                                  View=p.View,
                                   ProductDiscountedPrice = p.ProductDiscountedPrice,
                                   ProductName = p.ProductName,
                                   ProductPrice = p.ProductPrice,

@@ -24,6 +24,8 @@ namespace Business.Concrete
         {
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
+                    product.View= product.View+ product.View;
+
         }
 
     
@@ -39,7 +41,10 @@ namespace Business.Concrete
 
         public IDataResult<Products> GetById(int Id)
         {
+            var product = _productDal.Get(p => p.Id == Id);
+            product.View = product.View + 1;
             return new SuccessDataResult<Products>(_productDal.Get(p => p.Id == Id));
+
         }
 
         public IDataResult<List<ProductDetailsDto>> GetProductDetails()
