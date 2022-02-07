@@ -41,11 +41,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<PendingProductManager>().As<IPendingProductsService>().SingleInstance();
             builder.RegisterType<EfPendingProductDal>().As<IPendingProductsDal>().SingleInstance();
 
+            builder.RegisterType<CartManager>().As<ICartService>().SingleInstance();
+            builder.RegisterType<EfCartDal>().As<ICartDal>().SingleInstance();
+
+
             builder.RegisterType<ProductImageManager>().As<IProductImageService>().SingleInstance();
             builder.RegisterType<EfProductImageDal>().As<IProductImageDal>().SingleInstance();
-
-            builder.RegisterType<CartsManager>().As<ICartService>().SingleInstance();
-            builder.RegisterType<EfCartDal>().As<ICartDal>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
-
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CartController : Controller
+    public class CartController : ControllerBase
     {
         private ICartService _cartService;
 
@@ -20,29 +20,7 @@ namespace WebApi.Controllers
             _cartService = cartService;
         }
 
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _cartService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getalldetails")]
-        public IActionResult GetCartDetails()
-        {
-            var result = _cartService.GetCartDetails();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-         
-        [HttpGet("getdetailsbyuser")]
+        [HttpGet("getdetailsbyuserıd")]
         public IActionResult GetCartDetailsByUserId(int userId)
         {
             var result = _cartService.GetCartDetailsByUserId(userId);
@@ -63,10 +41,22 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("update")]
-        public IActionResult Update(Carts carts)
+         
+        [HttpGet("getdetailsbyuserid")]
+        public IActionResult GetCartDetailsByUserId(int userId)
         {
             var result = _cartService.Update(carts);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll(Carts carts)
+        {
+            var result = _cartService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -84,5 +74,6 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
+
     }
 }
