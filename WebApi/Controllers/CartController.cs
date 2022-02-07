@@ -20,7 +20,7 @@ namespace WebApi.Controllers
             _cartService = cartService;
         }
 
-        [HttpGet("getdetailsbyuserıd")]
+        [HttpGet("getdetailsbyuserid")]
         public IActionResult GetCartDetailsByUserId(int userId)
         {
             var result = _cartService.GetCartDetailsByUserId(userId);

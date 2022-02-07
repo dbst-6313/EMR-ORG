@@ -69,6 +69,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductWeight = p.ProductWeight,
                                   BrandId=p.BrandId,
                                   CategoryId = c.Id,
+                                  View = p.View,
                                   BrandName = b.Name,
                                   ProductShortDescription = p.ProductShortDescription,
                                   CategoryName = c.Name,
