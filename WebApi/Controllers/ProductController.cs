@@ -29,16 +29,7 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getallcolors")]
-        public IActionResult GetAllColors()
-        {
-            var result = _productService.GetAllColors();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+
 
         [HttpGet("getproductdetails")]
         public IActionResult GetProductDetails()
@@ -96,6 +87,8 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
+
+
 
 
         [HttpPost("delete")]

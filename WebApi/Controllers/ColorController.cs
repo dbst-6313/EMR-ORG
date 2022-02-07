@@ -11,30 +11,19 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CartController : ControllerBase
+    public class ColorController : ControllerBase
     {
-        private ICartService _cartService;
+        IColorService _colorService;
 
-        public CartController(ICartService cartService)
+        public ColorController(IColorService colorService)
         {
-            _cartService = cartService;
-        }
-
-        [HttpGet("getdetailsbyuserıd")]
-        public IActionResult GetCartDetailsByUserId(int userId)
-        {
-            var result = _cartService.GetCartDetailsByUserId(userId);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            _colorService = colorService;
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Carts carts)
+        public IActionResult Add(Colors colors)
         {
-            var result = _cartService.Add(carts);
+            var result = _colorService.Add(colors);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,9 +32,19 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Carts carts)
+        public IActionResult Update(Colors colors)
         {
-            var result = _cartService.Update(carts);
+            var result = _colorService.Update(colors);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("delete")]
+        public IActionResult Delete(Colors colors)
+        {
+            var result = _colorService.Delete(colors);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,26 +53,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll(Carts carts)
+        public IActionResult GetAll()
         {
-            var result = _cartService.GetAll();
+            var result = _colorService.GetAllColors();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-        [HttpPost("delete")]
-        public IActionResult Delete(Carts carts)
-        {
-            var result = _cartService.Delete(carts);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
     }
 }

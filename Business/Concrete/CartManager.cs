@@ -1,5 +1,4 @@
 ﻿using Business.Abstract;
-using Core.Utilities.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
@@ -9,41 +8,43 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class CartsManager:ICartService
+    public class CartManager : ICartService
+
     {
         ICartDal _cartsDal;
 
-        public CartsManager(ICartDal cartsDal)
+        public CartManager(ICartDal cartsDal)
         {
             _cartsDal = cartsDal;
         }
 
-        public IResult Add(Carts cart)
+        public IResult Add(Carts carts)
         {
             var allCarts = _cartsDal.GetAll();
             bool isUpdated = false;
             foreach (var item in allCarts)
             {
-                if (cart.ProductId == item.ProductId)
+                if (carts.ProductId == item.ProductId)
                 {
-                    cart.Quantity = item.Quantity+cart.Quantity;
-                    cart.Id = item.Id;
-                    _cartsDal.Update(cart);
+                    carts.Quantity = item.Quantity + carts.Quantity;
+                    carts.Id = item.Id;
+                    _cartsDal.Update(carts);
                     isUpdated = true;
                 }
+
             }
-            if (isUpdated==false)
+            if (isUpdated == false)
             {
-                _cartsDal.Add(cart);
+                _cartsDal.Add(carts);
             }
-            return new SuccessResult(Messages.BrandAdded);
+            return new SuccessResult("Ürün Sepete Eklendi");
 
         }
 
-        public IResult Delete(Carts cart)
+        public IResult Delete(Carts carts)
         {
-            _cartsDal.Delete(cart);
-            return new SuccessResult("s");
+            _cartsDal.Delete(carts);
+            return new SuccessResult("Ürün Sepetten Silindi");
         }
 
         public IDataResult<List<Carts>> GetAll()
@@ -51,25 +52,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Carts>>(_cartsDal.GetAll());
         }
 
-        public IDataResult<Carts> GetById(int Id)
-        {
-            return new SuccessDataResult<Carts>(_cartsDal.Get(b => b.Id == Id));
-        }
-
-        public IDataResult<List<CartDetailsDto>> GetCartDetails()
-        {
-            return new SuccessDataResult<List<CartDetailsDto>>(_cartsDal.GetCartDetails(), "sa");
-        }
-
         public IDataResult<List<CartDetailsDto>> GetCartDetailsByUserId(int userId)
         {
-            return new SuccessDataResult<List<CartDetailsDto>>(_cartsDal.GetCartDetailsByUserId(userId), "Succes");
+            return new SuccessDataResult<List<CartDetailsDto>>(_cartsDal.GetCartDetailsByUserId(userId), "Başarılı");
         }
 
-        public IResult Update(Carts cart)
+        public IResult Update(Carts carts)
         {
-            _cartsDal.Update(cart);
-            return new SuccessResult(Messages.AnswerAdded);
+            _cartsDal.Update(carts);
+            return new SuccessResult("Sepetiniz Güncellendi");
         }
     }
 }

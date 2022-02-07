@@ -9,10 +9,10 @@ namespace Business.Abstract
     public interface ICartService
     {
         IResult Add(Carts carts);
-        IResult Delete(Carts carts);
         IResult Update(Carts carts);
+        IResult Delete(Carts carts);
+        IDataResult<List<CartDetailsDto>> GetCartDetailsByUserId(int userId);
         IDataResult<List<Carts>> GetAll();
-        IDataResult<List<CartDetailsDto>> GetCartDetails();
-        IDataResult<List<CartDetailsDto>> GetCartDetailsByUserId(int userId); 
+
     }
 }
