@@ -41,11 +41,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-    
+
 
         [HttpPost("add")]
 
-        public IActionResult Add([FromForm] CategoryImage categoryImage, IFormFile file)
+        public IActionResult Add([FromForm] CategoryImage categoryImage,  IFormFile file)
         {
             var result = _categoryImageService.Add(categoryImage, file);
             if (result.Success)
