@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Constants;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -27,13 +28,13 @@ namespace Business.Concrete
                 return new ErrorResult();
             }
             var CategoryImageResult = FileHelper.Upload(file);
-            if (CategoryImageResult.Success)
+            if (!CategoryImageResult.Success)
             {
-                return new ErrorResult();
+                return new ErrorResult(CategoryImageResult.Message);
             }
             categoryImage.ImagePath = CategoryImageResult.Message;
             _categoryImageDal.Add(categoryImage);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CategoryImageAdded);
 
         }
 

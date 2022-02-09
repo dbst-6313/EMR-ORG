@@ -8,6 +8,8 @@ namespace Core.Utilities.Constants
 {
     public class Messages
     {
+        public static readonly string CategoryImageAdded;
+
         //Answer
         public static string AnswerAdded = "Cevap eklendi";
         public static string StateAccept = "Başvuru durumu:Kabul edildi";

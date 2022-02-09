@@ -4,12 +4,15 @@ using DataAccess.Abstract;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoriesDal: EfEntityRepositoryBase<Categories, EmrOrgContext>, ICategoryDal
+    public class EfCategoriesDal: EfEntityRepositoryBase<CategoryImage, EmrOrgContext>, ICategoryImageDal
     {
+   
        
     }
 }
