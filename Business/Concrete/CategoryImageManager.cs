@@ -27,7 +27,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult();
             }
-            var CategoryImageResult = FileHelper.Upload(file);
+            var CategoryImageResult = CategoryFileHelper.Upload(file);
             if (!CategoryImageResult.Success)
             {
                 return new ErrorResult(CategoryImageResult.Message);
@@ -45,7 +45,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult();
             }
-            FileHelper.Delete(image.ImagePath);
+            CategoryFileHelper.Delete(image.ImagePath);
             _categoryImageDal.Delete(categoryImage);
             return new SuccessResult();
         }
@@ -67,7 +67,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult();
             }
-            var updated = FileHelper.Update(file, image.ImagePath);
+            var updated = CategoryFileHelper.Update(file, image.ImagePath);
             if (!updated.Success)
             {
                 return new ErrorResult(updated.Message);

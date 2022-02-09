@@ -10,7 +10,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoriesDal: EfEntityRepositoryBase<CategoryImage, EmrOrgContext>, ICategoryImageDal
+    public class EfCategoriesDal: EfEntityRepositoryBase<Categories, EmrOrgContext>, ICategoryDal
     {
    
        
