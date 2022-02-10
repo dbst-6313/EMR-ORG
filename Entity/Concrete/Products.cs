@@ -19,6 +19,7 @@ namespace Entity.Concrete
         public int ProductDiscountedPrice { get; set; }
         public int ProductWeight { get; set; }
         public int UnitsInStock { get; set; }
+        public DateTime AddDate { get; set; } 
         public int View { get; set; } = 0;
     }
 }

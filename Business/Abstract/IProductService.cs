@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<List<ProductDetailsDto>> GetProductDetails();
         IDataResult<List<ProductDetailsDto>> GetProductDetailsById(int id);
         IDataResult<List<ProductDetailsDto>> GetProductDetailsByCategoryId(int categoryId);
+        IDataResult<List<ProductDetailsDto>> GetProductDetailsByDateAscending();
     }
 }

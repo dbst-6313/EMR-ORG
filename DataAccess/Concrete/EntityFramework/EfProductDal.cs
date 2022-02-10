@@ -44,6 +44,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductShortDescription = p.ProductShortDescription,
                                   UnitsInStock = p.UnitsInStock,
                                   Images = (from i in context.product_image where i.ProductId == p.Id select i.ImagePath).ToList(),
+                                  AddDate = p.AddDate
                               };
                 return product.ToList();
             }
@@ -81,6 +82,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   ProductPrice = p.ProductPrice,
                                   UnitsInStock = p.UnitsInStock,
                                   Images = (from i in context.product_image where i.ProductId == p.Id select i.ImagePath).ToList(),
+                                  AddDate = p.AddDate
                               };
                 return product.Where(p=>p.Id == id).ToList();
             }

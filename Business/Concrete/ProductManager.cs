@@ -22,6 +22,7 @@ namespace Business.Concrete
 
         public IResult Add(Products product)
         {
+            product.AddDate = DateTime.Now;
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
                     
@@ -71,6 +72,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductUpdated);
         }
 
-    
+        public IDataResult<List<ProductDetailsDto>> GetProductDetailsByDateAscending()
+        {
+            var data = _productDal.GetProductDetails();
+            data.Sort((a, b) => b.AddDate.CompareTo(a.AddDate));
+            return new SuccessDataResult<List<ProductDetailsDto>>(data);
+        }
     }
 }

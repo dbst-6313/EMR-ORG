@@ -39,8 +39,7 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-
-
+        
         [HttpGet("getallpendingproductsbyuserid")]
         public IActionResult GetAllPendingProductsByUserId(int userId)
         {

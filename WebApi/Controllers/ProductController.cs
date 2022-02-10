@@ -41,6 +41,17 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getalldetailsbyasc")]
+        public IActionResult GetAllDetailsByAsc()
+        {
+            var result = _productService.GetProductDetailsByDateAscending();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getproductdetailsbyid")]
         public IActionResult GetProductDetailsById(int id)
         {
