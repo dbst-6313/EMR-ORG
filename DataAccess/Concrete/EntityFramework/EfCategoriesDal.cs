@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CategoryWithImage
                              {
                                  Id = c.Id,
-                                 ImagePath = cp.ImagePath,
+                                 ImagePath = (from cpp in context.category_image where cpp.CategoryId == c.Id select cpp.ImagePath).ToList(),
                                  Name = c.Name
                              };
                 return result.ToList();
