@@ -57,7 +57,7 @@ namespace Business.Concrete
 
         public IDataResult<CategoryImage> GetById(int Id)
         {
-            return new SuccessDataResult<CategoryImage>(_categoryImageDal.Get(d => d.CategoryId== Id));
+            return new SuccessDataResult<CategoryImage>(_categoryImageDal.Get(d => d.CategoryImageId== Id));
         }
 
         public IResult Update(IFormFile file, CategoryImage categoryImage)
