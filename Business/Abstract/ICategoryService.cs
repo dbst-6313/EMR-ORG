@@ -13,5 +13,6 @@ namespace Business.Abstract
         IResult Update(Categories category);
         IDataResult<List<Categories>> GetAll();
         IDataResult<Categories> GetById(int Id);
+        IDataResult<List<CategoryWithImage>> GetCategoriyDetails();
     }
 }

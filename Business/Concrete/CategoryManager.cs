@@ -41,6 +41,11 @@ namespace Business.Concrete
             return new SuccessDataResult<Categories>(_categoryDal.Get(c => c.Id == Id));
         }
 
+        public IDataResult<List<CategoryWithImage>> GetCategoriyDetails()
+        {
+           return new SuccessDataResult<List<CategoryWithImage>>(_categoryDal.categoryWithImages());
+        }
+
         public IResult Update(Categories category)
         {
             _categoryDal.Update(category);
