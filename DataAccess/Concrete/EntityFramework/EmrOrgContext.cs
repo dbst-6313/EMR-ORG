@@ -11,7 +11,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=127.0.0.1;port=3306;database=emrorg;uid=root;");
+            optionsBuilder.UseMySQL("server=127.0.0.1;port=3306;database=emrorg;uid=test;password=Fa_12345?");
         }
        
         public DbSet<Brands> brand { get; set; }

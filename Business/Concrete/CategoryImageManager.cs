@@ -23,7 +23,7 @@ namespace Business.Concrete
         public IResult Add(CategoryImage categoryImage, IFormFile file)
         {
             var imageLımıt = _categoryImageDal.GetAll(c => c.CategoryId == categoryImage.CategoryId).Count;
-            if (imageLımıt>6)
+            if (imageLımıt>1)
             {
                 return new ErrorResult();
             }

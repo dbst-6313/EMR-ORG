@@ -59,7 +59,7 @@ namespace Business.Concrete
 
         public IDataResult<ProductImages> GetById(int Id)
         {
-            return new SuccessDataResult<ProductImages>(_ProductImageDal.Get(d => d.ProductId == Id));
+            return new SuccessDataResult<ProductImages>(_ProductImageDal.Get(d => d.ProductImageId == Id));
         }
 
         public IDataResult<List<ProductImages>> GetImagesByDonateId(int donateId)
